@@ -8,8 +8,8 @@ In a first time, the only supported board will be Arduino Uno. When everything w
 
 - [ ] Control the Arduino Uno board via a GUI
   - [ ] Control the Arduino board through serial link
-  - [ ] Control the Arduino board with Python
-  - [ ] Use the GUI to control Python
+  - [ ] Control the Arduino board with NodeJs
+  - [ ] Use the GUI to control NodeJs
   - [ ] Make a good documentation
 - [ ] Control every Arduino board models
 - [ ] Interface with serial communications of the board (I2C, SPI...)
@@ -25,11 +25,11 @@ A program will be made for the Arduino board to interpret and execute the order 
 
 ##Control the Arduino
 
-The main program which will make the orders to the Arduino board will be written in Python. This language is chosen because of its flexibility and its simplicity.
+The main program which will make the orders to the Arduino board will be written in NodeJs. This language is chosen because of its flexibility and its simplicity.
 
 ##Graphical User Interface (GUI)
 
-No choices have been made for the interface yet.
+The control interface will be designed in web languages, in interaction with the NodeJs web server using web sockets.
 
 ##Management of the project
 
@@ -46,8 +46,8 @@ Dans un premier temps, seule la carte Arduino Uno ne sera supportée. Quand tout
 
 - [ ] Contrôler une carte Arduino Uno via une IHM
   - [ ] Contrôler une carte Arduino via le lien  série
-  - [ ] Contrôler une carte Arduino grâce Python
-  - [ ] Utiliser une IHM pour contrôler le Python
+  - [ ] Contrôler une carte Arduino grâce NodeJs
+  - [ ] Utiliser une IHM pour contrôler le NodeJs
   - [ ] Faire une documentation complète
 - [ ] Contrôler tous les modèles de cartes Arduino
 - [ ] S'interfacer avec les bus de communication série de la carte(I2C, SPI...)
@@ -63,11 +63,11 @@ Un programme sera fait pour que la carte Arduino interprète et exécute les ord
 
 ##Contrôler l'Arduino
 
-Le programme principal qui construira les ordres pour la carte Arduino sera écrit en Python. Ce langage a été choisi pour sa flexibilité et sa simplicité.
+Le programme principal qui construira les ordres pour la carte Arduino sera écrit en NodeJs. Ce langage a été choisi pour sa flexibilité et sa simplicité.
 
 ##IHM (Interface Homme Machine)
 
-Aucun choix n'a été fait quant à la conception de l'interface pour l'instant.
+L'interface de contrôle sera faite en langage web. Ses intéractions avec le seveur NodeJs sera géré via des web sockets.
 
 ##Management du projet
 
