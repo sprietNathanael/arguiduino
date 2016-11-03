@@ -40,10 +40,11 @@ Changes the pin mode of a given pin number (OUTPUT, INPUT, INPUT_PULLUP)
 
 Makes a digital or an analog write (PWM) a value on a given pin number
 - Command : 0x02
-- Data length : 2 bytes
+- Data length : 3 bytes
 - Data :
     - pin : 1 byte
     - mode : 1 byte :
         - DigitalWrite : 0x00
         - Analog Write : 0x01
+    - value : 1 byte
 
