@@ -32,9 +32,9 @@ Changes the pin mode of a given pin number (OUTPUT, INPUT, INPUT_PULLUP)
 - Data :
     - pin : 1 byte
     - pin mode : 1 byte :
-        - OUTPUT : 0x00
-        - INPUT : 0x01
-        - INPUT_PULLUP : 0x02
+        - OUTPUT : 0x01
+        - INPUT : 0x02
+        - INPUT_PULLUP : 0x03
 
 ##### Write
 
@@ -44,7 +44,7 @@ Makes a digital or an analog write (PWM) a value on a given pin number
 - Data :
     - pin : 1 byte
     - mode : 1 byte :
-        - DigitalWrite : 0x00
-        - Analog Write : 0x01
+        - DigitalWrite : 0x01
+        - Analog Write : 0x02
     - value : 1 byte
 
