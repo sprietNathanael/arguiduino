@@ -1,6 +1,3 @@
-void setLedState(char state);
-void computeFrame(String frame);
-
 // the setup function runs once when you press reset or power the board
 void setup()
 {
@@ -10,10 +7,10 @@ void setup()
 	{
 		; // wait for serial port to connect. Needed for native USB port only
 	}
-	pinMode(LED_BUILTIN, OUTPUT);
 
 	// print the welcome message
 	Serial.println("--- Welcome to the Arguiduino serial interface ---");
+
 
 }
 
@@ -23,42 +20,58 @@ void loop()
 	String stringFromSerial = Serial.readString();
 	if(stringFromSerial.length() > 0)
 	{
-		Serial.print("Received : "+stringFromSerial+"\n");
 		computeFrame(stringFromSerial);
 	}
 }
 
 void computeFrame(String frame)
 {
-	Serial.print("length : ");
-	Serial.print(frame.length()-1);
-	Serial.print("\n");
-	if(frame.length()-1 == 2)
+	int opCode = frame[0];
+	int length = frame[1];
+	if(opCode == 0x01)
 	{
-		char opCode = frame[0];
-		char data = frame[1];
-		Serial.print("opCode : ");
-		Serial.print(opCode);
-		Serial.print(" , data : ");
-		Serial.print(data);
-		Serial.print("\n");
-		if(opCode == '1')
-		{
-			setLedState(data);
-		}
+		changePinMode(frame.substring(2,length+2));
+	}
+	else if(opCode == 0x02)
+	{
+		writeState(frame.substring(2,length+2));
 	}
 }
 
-void setLedState(char state)
+void changePinMode(String data)
 {
-	int stateToSet;
-	if(state == '0')
+	int pinNumber = data[0];
+	if(data[1] == 0x01)
 	{
-		stateToSet = LOW;
+		pinMode(pinNumber, OUTPUT);
 	}
-	else
+	else if(data[1] == 0x02)
 	{
-		stateToSet = HIGH;
+		pinMode(pinNumber, INPUT);
 	}
-	digitalWrite(LED_BUILTIN, stateToSet);
+	else if(data[1] == 0x03)
+	{
+		pinMode(pinNumber, INPUT_PULLUP);
+	}
+}
+
+void  writeState(String data)
+{
+	int pinNumber = data[0];
+	int value = data[2];
+	if(data[1] == 0x01)
+	{
+		if(value > 0)
+		{
+			digitalWrite(pinNumber, HIGH);
+		}
+		else
+		{
+			digitalWrite(pinNumber, LOW);
+		}
+	}
+	else if(data[1] == 0x02)
+	{
+		analogWrite(pinNumber, value);
+	}
 }
